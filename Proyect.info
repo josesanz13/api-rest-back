@@ -1,0 +1,30 @@
+*** Para uso del proyecto, recordar configurar la base del proyecto [ config.php ] y la base de datos [ database.php ] ambos en la carpeta config ***
+
+*** DATOS DEL PROYECTO ***
+
+    Proyecto : APIRESTLOCAL.WEB
+    Framework : Codeigniter
+    Base de datos [driver] : mysqli ( Ejecutar instrucciones SQL en archivo 'CreateTables.sql' posterior configurar base de datos en archivo database.php )
+    Protocolo de autenticación : JWT ( JSON WEB TOKEN )
+
+*** INORMACION DE PROYECTO ***
+
+    El proyecto consta de 3 controladores [ AuthController,ProductController,TestUnitController ]
+
+    - AuthController : Es el controlador donde se debe de hacer login para obtener el respectivo JWT y poder acceder a las peticiones de los productos.
+
+    - ProductController : En este controlador se tienen todos los metodos para gestionar la tabla de productos.
+
+    - TestUnitController : En este controlador se pueden apreciar las pruebas unitarias de algunos metodos.
+
+*** EXPOSICIÓN CREACION DE TABLAS ***
+
+    Se proceden a crear 4 tablas necesarias para el proyecto.
+
+    - logs : Esta tabla se crea con el fin de alimentar la clase general para llevar logs de respuestas de los endpoint, en la clase general REST_Controller
+
+    - users : Esta tabla se crea para llevar el control y registro de los usuarios que pueden acceder al sistema y previamente a la información.
+
+    - products : Esta tabla se crea para llevar el control de los productos con algunos de los campos mas relevantes para este, la cual se gestiona mediante los endpoint creados.
+
+    - user_token_authorization : Esta tabla se crea para llevar el control de los JWT generados mediante el protocolo de login, el cual permite gestionar la tabla de productos. Este tiene vigencia de 1 día.
