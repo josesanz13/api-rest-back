@@ -2260,7 +2260,7 @@ abstract class REST_Controller extends CI_Controller {
                 $query = $query->row_array(); 
                 $id = $query['id'];
 
-                $sql = " UPDATE user_token_authorization SET update_token = {$current_date} WHERE id = {$id}";
+                $sql = " UPDATE user_token_authorization SET update_token = {$this->db->escape($current_date)}, access_token = {$this->db->escape($token)}  WHERE id = {$this->db->escape($id)}";
 
                 if ( $this->db->query( $sql ) ) {
                     $response = true;
@@ -2300,16 +2300,16 @@ abstract class REST_Controller extends CI_Controller {
         // Decode token
         $data_token = decode_token_api( $headers );
         if ($data_token == 'JWT is not valid') {
-            return "JWT is not valid";
+            return "JWT is not valid 1";
         }
         
         $user_id = $data_token->user_id;            
 
         // Validate token
         $token = $this->validate_token_api( array('id' => $user_id),$headers["Authorization"] );
-
+        
         if ( $token == "" ) {
-            return "JWT is not valid";
+            return "JWT is not valid 2";
         }
 
         return 'success';
